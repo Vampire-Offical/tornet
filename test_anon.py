@@ -10,12 +10,12 @@ while True:
         file = open('/dev/shm/location.txt', 'w')
         file.write(rel_loc)
         file.close()
-        print('location is : ' + rel_loc)
+        print( rel_loc)
         os.system('rm -rf tes')
         break
     except:
         sleep(1)
         c+=1
-        print(c)
+        print(0)
         pass
 

@@ -1,0 +1,11 @@
+[Unit]
+Description=torctl autostart service
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/lib/test_anon.py
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

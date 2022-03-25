@@ -16,16 +16,17 @@ try:
     rel = file.read()
     file.close()
    
-    c=os.popen('gksudo -S "torctl restart" -m "please type your password"').read()   
+    c=os.popen('gksudo -S "torctl stop" -m "please type your password"').read()   
     if c==None:
         os.system('notify-send "please provide valid password"')
     else:
         after_location = getip()
-        if after_location == rel:
+        if after_location != rel:
             os.system('notify-send "your location is not changed"')
             print(0)
         else:
-            print(1)
+            # print(1)
+            print(getip())
             os.system('notify-send "location is changed"')
 
 except:
