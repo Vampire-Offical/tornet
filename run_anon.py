@@ -30,4 +30,4 @@ try:
 
 except:
     pass
-
+    os.system('notify-send "please check your network connection"')
