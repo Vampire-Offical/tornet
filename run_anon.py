@@ -23,9 +23,9 @@ try:
         after_location = getip()
         if after_location == rel:
             os.system('notify-send "your location is not changed"')
-            print(0)
+            print("your location is not changed")
         else:
-            print(1)
+            print("location is changed")
             os.system('notify-send "location is changed"')
 
 except:
