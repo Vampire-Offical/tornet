@@ -1,0 +1,18 @@
+[Desktop Entry]
+Name=Anon
+Comment=Code Editing. Redefined.
+GenericName=Text Editor
+Exec=/usr/bin/anon
+Icon=vscodium
+Type=Application
+StartupNotify=true
+StartupWMClass=VSCodium
+Categories=Utility;Development;IDE;
+MimeType=text/plain;inode/directory;
+Actions=new-empty-window;
+Keywords=anon;
+
+[Desktop Action new-empty-window]
+Name=New Empty Window
+Exec=/usr/bin/anon
+Icon=vscodium

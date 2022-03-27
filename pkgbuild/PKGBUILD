@@ -1,0 +1,32 @@
+pkgname=anon
+pkgver=r15.52c3c30
+pkgrel=1
+pkgdesc='Distribution-independent installer framework'
+arch=('x86_64')
+license=(GPL)
+url="https://github.com/Vampire-Offical/tornet"
+license=('LGPL')
+depends=('torctl')
+makedepends=('git' )
+source+=("git+$url.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/tornet"
+
+  #printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+
+package() {
+	cd ${srcdir}/tornet
+	mkdir -p $pkgdir/usr/bin
+
+
+	mv 	run_anon.py $pkgdir/usr/bin/run_anon.py
+	mv  test_anon.py $pkgdir/usr/bin/test_anon.py
+	mv  stop_anon.py $pkgdir/usr/bin/stop_anon.py
+	mv  chng_anon.py $pkgdir/usr/bin/chng_anon.py
+	mv  anon $pkgdir/usr/bin/anon
+}
