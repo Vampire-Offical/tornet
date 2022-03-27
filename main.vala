@@ -40,7 +40,7 @@ class Mainwig: Gtk.Window{
     int test_status;
     try {
 
-        Process.spawn_command_line_sync("python3 /usr/lib/test_anon.py",out test_stdout,out test_stderr,out test_status);
+        Process.spawn_command_line_sync("python3 /usr/bin/test_anon.py",out test_stdout,out test_stderr,out test_status);
         location.label =test_stdout;
 
     } catch (SpawnError e) {
@@ -55,7 +55,7 @@ class Mainwig: Gtk.Window{
     int test_status;
     try {
 
-        Process.spawn_command_line_sync("python3 /usr/lib/run_anon.py",out test_stdout,out test_stderr,out test_status);
+        Process.spawn_command_line_sync("python3 /usr/bin/run_anon.py",out test_stdout,out test_stderr,out test_status);
         location.label =test_stdout;
 
     } catch (SpawnError e) {
@@ -69,7 +69,7 @@ class Mainwig: Gtk.Window{
     int test_status;
     try {
 
-        Process.spawn_command_line_sync("python3 /usr/lib/stop_anon.py",out test_stdout,out test_stderr,out test_status);
+        Process.spawn_command_line_sync("python3 /usr/bin/stop_anon.py",out test_stdout,out test_stderr,out test_status);
         location.label =test_stdout;
 
     } catch (SpawnError e) {
