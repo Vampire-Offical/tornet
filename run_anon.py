@@ -4,10 +4,8 @@ import requests
 
 
 def getip():
-    sleep(1)
-    rel_loc_req = requests.get('https://json.geoiplookup.io/').json()
-    rel_loc = rel_loc_req['country_name']
-    return rel_loc 
+    ip = requests.get("https://icanhazip.com/").text
+    return ip
 
 
 
@@ -16,7 +14,7 @@ try:
     rel = file.read()
     file.close()
    
-    c=os.popen('gksudo -S "torctl restart" -m "please type your password"').read()   
+    c=os.popen('gksudo -S "torctl start" -m "please type your password"').read()   
     if c==None:
         os.system('notify-send "please provide valid password"')
     else:
@@ -30,4 +28,5 @@ try:
 
 except:
     pass
-    os.system('notify-send "please check your network connection"')
+    print("it is already started")
+    os.system('notify-send "it is already started"')

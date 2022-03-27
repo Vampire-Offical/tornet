@@ -3,15 +3,20 @@ import os
 from time import sleep
 c=0
 os.system('rm -rf /dev/shm/location.txt')
+
+
+def getloc():
+    ip = requests.get("https://icanhazip.com/").text
+    print(ip)
+    file = open('/dev/shm/location.txt', 'w')
+    file.write(ip)
+    file.close()
+
+
+
 while True:
     try:
-        rel_loc_req = requests.get('https://json.geoiplookup.io/').json()
-        rel_loc = rel_loc_req['country_name']
-        file = open('/dev/shm/location.txt', 'w')
-        file.write(rel_loc)
-        file.close()
-        print( rel_loc)
-        os.system('rm -rf tes')
+        getloc()
         break
     except:
         sleep(1)

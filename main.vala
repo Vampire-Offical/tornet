@@ -10,22 +10,24 @@ class Mainwig: Gtk.Window{
    
     Gtk.Box box = new Gtk.Box(Gtk.Orientation.VERTICAL,0);
 
-    Gtk.Button check = new Gtk.Button.with_label("get the location");
+    Gtk.Button check = new Gtk.Button.with_label("get the ip address");
     Gtk.Button start = new Gtk.Button.with_label("start");
     Gtk.Button stop  = new Gtk.Button.with_label("stop");
+    Gtk.Button chng  = new Gtk.Button.with_label("change Ip address");
     //  box.pack_start( new Gtk.Button.with_label("start"),false,false,0 );
     //  box.pack_start( new Gtk.Button.with_label("stop"),false,false,100 );
 
     check.clicked.connect(oncheck);
     start.clicked.connect(onstart);
     stop.clicked.connect(onstop);
-
-    location = new Gtk.Label("Please Click to get the location");
+    chng.clicked.connect(onchng);
+    location = new Gtk.Label("Please Click to get the ip address");
 
 
     box.pack_start(location,false,false,0);
     box.pack_start(check,false,true,0);
     box.pack_start(start,true,true,0);
+    box.pack_start(chng,true,true,0);
     box.pack_end(stop,true,true,0);
 
 
@@ -47,6 +49,20 @@ class Mainwig: Gtk.Window{
         print ("Error: %s\n", e.message);
     }
   }
+  public void onchng( Gtk.Button btn ){
+    string test_stdout;
+    string test_stderr;
+    int test_status;
+    try {
+
+        Process.spawn_command_line_sync("python3 /usr/bin/chng_anon.py",out test_stdout,out test_stderr,out test_status);
+        location.label =test_stdout;
+
+    } catch (SpawnError e) {
+        print ("Error: %s\n", e.message);
+    }
+  }
+
 
 
   public void onstart( Gtk.Button btn ){
